@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -31,6 +32,10 @@ public class Getproducts extends HttpServlet {
 		
 		
 		response.setContentType("text/html");
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/header");
+		rd.include(request, response);
 		PrintWriter out = response.getWriter();
 		out.print("<h2>Product Selection </h2>");
 		int cid = Integer.parseInt(request.getParameter("catid"));
@@ -44,7 +49,7 @@ public class Getproducts extends HttpServlet {
 	    	 pt=con.prepareStatement(qeury);
 	    	 pt.setInt(1, cid);
 	    	 result=pt.executeQuery();
-	    	 out.print("<form action=''>");
+	    	 out.print("<form action='AddToCart'>");
 	    	 out.print("Select product");
 	    	 out.print("<select name='SelectedProduct'>");
 	    	 while(result.next())
