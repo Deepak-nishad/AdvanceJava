@@ -35,6 +35,15 @@ public class ContactService {
 		return crepo.save(contact);
 		
 	}
+//	public void delete(int id) {
+//		 crepo.deleteById(id);
+//		
+//	}
+//	
+	public void delete(Contact ct) {
+		crepo.delete(ct);
+		
+	}
 	
 	
 
