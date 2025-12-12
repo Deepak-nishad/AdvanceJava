@@ -1,0 +1,41 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.demo.Service2Application;
+import com.example.demo.entities.User;
+
+@RestController
+@RequestMapping("/admin")
+public class HelloController {
+	
+private final Service2Application service2Application;
+	
+	@Autowired
+	RestTemplate rt;
+
+    HelloController(Service2Application service2Application) {
+        this.service2Application = service2Application;
+    }
+	
+
+	@GetMapping("/welboy")
+	public String  welcome() {
+		return "admin role";
+	}
+	
+	@GetMapping("/getuser")
+	public ResponseEntity<User> getuser() {
+		//comm with service 1, get user instance, send it in the response
+		ResponseEntity<User> res = rt.getForEntity("http://localhost:8081/user/getuser", User.class);
+		System.out.println(res.getStatusCode());
+		System.out.println(res.getBody());
+		return res;
+		
+	}
+}

@@ -13,9 +13,10 @@ import lombok.ToString;
 @ToString
 public class ProductDummy {
 	
-	String pname;
-	String pdesc;
-	float price;
-	int catid;
+	Integer p_id;
+	String p_name;
+	String p_description;
+	float p_price;
+	
 
 }

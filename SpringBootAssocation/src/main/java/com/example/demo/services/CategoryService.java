@@ -11,19 +11,19 @@ import com.example.demo.repository.CategoryRepository;
 public class CategoryService {
 	@Autowired
 	CategoryRepository crepo;
-	
+
 	public List<Category> getAll() {
 		return crepo.findAll();
-		
+
 	}
-	
-	
-	
+
 	@SuppressWarnings("deprecation")
 	public Category getOne(int id) {
 		return crepo.getOne(id);
 	}
-	
-	
+
+	public Category save(Category cate) {
+		return crepo.save(cate);
+	}
 
 }

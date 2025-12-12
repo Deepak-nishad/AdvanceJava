@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Category;
 import com.example.demo.entities.Product;
+import com.example.demo.entities.ProductDummy;
 import com.example.demo.services.CategoryService;
 import com.example.demo.services.ProductService;
 
@@ -33,13 +34,24 @@ public class ProductController {
 		return pservice.getOne(id);
 	}
 	
-	@PostMapping("/save")
-	public Product save(@RequestBody Product p) {
-		//System.out.print("all done");
-		int cid = p.getCategory().getC_id();
-		Category cat = cservice.getOne(cid);
-		p.setCategory(cat);
-		return pservice.save(p);
+	
+	
+	// Save new child with new master
+		@PostMapping("/save")
+		public Product save(@RequestBody Product p) {
+			return pservice.save(p);
+		}
+		
+	@PostMapping("/saveProduct")
+	public Product save1(@RequestBody ProductDummy p) {
+		//id - entity instance
+				Category cat = cservice.getOne(p.getP_id());
+				Product pr = new Product();
+				pr.setP_name(p.getP_name());
+				pr.setP_description(p.getP_description());
+				pr.setP_price(p.getP_price());
+				pr.setCategory(cat);
+				return pservice.save(pr);
 	}
 	
 	
