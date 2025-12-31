@@ -16,7 +16,7 @@ public class ProductDummy {
 	Integer p_id;
 	String p_name;
 	String p_description;
-	float p_price;
+	Float p_price;
 	
 
 }

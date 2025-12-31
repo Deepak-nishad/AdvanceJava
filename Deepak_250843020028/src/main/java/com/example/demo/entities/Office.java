@@ -1,38 +1,38 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@Table(name = "product")
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Product {
-
+@ToString
+@Entity
+@Table(name="offices")
+public class Office {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer p_id;
-	String p_name;
-	String p_description;
-	Float p_price;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cat_id")
-	@JsonIgnoreProperties("products")
-	Category category;
+	Integer officecode;
+	String city;
+	String phone;
+	String addressline1;
+	String addressline2;
+	String state;
+	String country;
+	String postalcode;
+	String territory;
+	
 
 }
+
+
